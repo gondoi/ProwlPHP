@@ -146,7 +146,10 @@ class Prowl
 		{
 			curl_setopt($this->_obj_curl, CURLOPT_HTTPPROXYTUNNEL, 1);
 			curl_setopt($this->_obj_curl, CURLOPT_PROXY, $this->_proxy);
-			curl_setopt($this->_obj_curl, CURLOPT_PROXYUSERPWD, $this->_proxy_userpwd); 
+			if($this->_proxy_userpwd)
+			{
+				curl_setopt($this->_obj_curl, CURLOPT_PROXYUSERPWD, $this->_proxy_userpwd); 
+			}
 		}
 		
 		$return = curl_exec($this->_obj_curl);
